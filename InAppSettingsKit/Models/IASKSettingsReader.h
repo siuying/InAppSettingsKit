@@ -53,6 +53,7 @@
 #define kIASKPSSliderSpecifier                @"PSSliderSpecifier"
 #define kIASKPSTitleValueSpecifier            @"PSTitleValueSpecifier"
 #define kIASKPSTextFieldSpecifier             @"PSTextFieldSpecifier"
+#define kIASKDDOpenURLSpecifier               @"DDOpenURLSpecifier"
 
 #define kIASKPSChildPaneSpecifier             @"PSChildPaneSpecifier"
 
