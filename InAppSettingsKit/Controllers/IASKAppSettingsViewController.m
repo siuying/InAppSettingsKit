@@ -25,6 +25,7 @@
 #import "IASKSlider.h"
 #import "IASKSpecifier.h"
 #import "IASKSpecifierValuesViewController.h"
+#import "Three20/Three20.h"
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
@@ -399,7 +400,7 @@ static NSString *kIASKCredits = @"Powered by InAppSettingsKit"; // Leave this as
         [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
         return cell;
     }
-	else if ([[specifier type] isEqualToString:kIASKDDOpenURLSpecifier]) {
+	else if ([[specifier type] isEqualToString:kIASKDDOpenURLSpecifier] || [[specifier type] isEqualToString:kIASKDDInAppOpenURLSpecifier]) {
 	    UITableViewCell *cell = [[[IASKPSTitleValueSpecifierViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kIASKDDOpenURLSpecifier] autorelease];
 	    [[cell textLabel] setText:[specifier title]];
 	    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -488,8 +489,11 @@ static NSString *kIASKCredits = @"Powered by InAppSettingsKit"; // Leave this as
         targetViewController.showCreditsFooter = NO;
         [[self navigationController] pushViewController:targetViewController animated:YES];
     }
+	else if ([[specifier type] isEqualToString:kIASKDDInAppOpenURLSpecifier]) {
+		[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:specifier.file] applyAnimated:YES]];
+	}
 	else if ([[specifier type] isEqualToString:kIASKDDOpenURLSpecifier]) {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:specifier.file]];		
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:specifier.file]]; 
 	}  
     else {
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
