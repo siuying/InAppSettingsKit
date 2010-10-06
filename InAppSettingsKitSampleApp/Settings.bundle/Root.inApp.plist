@@ -112,6 +112,22 @@
 		</dict>
 		<dict>
 			<key>Title</key>
+			<string>Open URL</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>IASKOpenURLSpecifier</string>
+			<key>Title</key>
+			<string>Visit us at</string>
+			<key>DefaultValue</key>
+			<string>inappsettingskit.com</string>
+			<key>File</key>
+			<string>http://www.inappsettingskit.com/</string>
+		</dict>
+		<dict>
+			<key>Title</key>
 			<string></string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>

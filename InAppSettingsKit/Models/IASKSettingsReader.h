@@ -57,19 +57,19 @@
 #define kIASKDDInAppOpenURLSpecifier          @"PSInAppOpenURLSpecifier"
 
 #define kIASKPSChildPaneSpecifier             @"PSChildPaneSpecifier"
+#define kIASKOpenURLSpecifier                 @"IASKOpenURLSpecifier"
 
 #define kIASKBundleFolder                     @"Settings.bundle"
+#define kIASKBundleFolderAlt                  @"InAppSettings.bundle"
 #define kIASKBundleFilename                   @"Root.plist"
 
 #define kIASKAppSettingChanged                @"kAppSettingChanged"
 
 #define kIASKSectionHeaderIndex               0
 
-#define kIASKSliderNoImagesX                  21
-#define kIASKSliderNoImagesWidth              278
-#define kIASKSliderBothImagesX                53
-#define kIASKSliderBothImagesWidth            214
-#define kIASKSliderOneImageWidth              246
+#define kIASKSliderNoImagesPadding            11
+#define kIASKSliderImagesPadding              43
+
 
 #define kIASKTableWidth                       320
 #define kIASKSpacing                          5
@@ -79,11 +79,24 @@
 #define kIASKPaddingRight                     10
 
 #define kIASKLabelFontSize                    17
+#define kIASKgrayBlueColor                    [UIColor colorWithRed:0.318 green:0.4 blue:0.569 alpha:1.0]
+
+#ifndef kCFCoreFoundationVersionNumber_iPhoneOS_4_0
+#define kCFCoreFoundationVersionNumber_iPhoneOS_4_0 550.32
+#endif
+
+#define IASK_IF_IOS4_OR_GREATER(...) \
+if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iPhoneOS_4_0) \
+{ \
+__VA_ARGS__ \
+}
+
 
 @class IASKSpecifier;
 
 @interface IASKSettingsReader : NSObject {
     NSString        *_path;
+    NSString        *_bundleFolder;
     NSDictionary    *_settingsBundle;
     NSArray         *_dataSource;
     NSBundle        *_bundle;
@@ -100,6 +113,7 @@
 - (NSString*)pathForImageNamed:(NSString*)image;
 
 @property (nonatomic, retain) NSString      *path;
+@property (nonatomic, retain) NSString      *bundleFolder;
 @property (nonatomic, retain) NSDictionary  *settingsBundle;
 @property (nonatomic, retain) NSArray       *dataSource;
 
