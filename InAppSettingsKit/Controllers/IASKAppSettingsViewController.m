@@ -25,11 +25,8 @@
 #import "IASKSlider.h"
 #import "IASKSpecifier.h"
 #import "IASKSpecifierValuesViewController.h"
-<<<<<<< HEAD
 #import "Three20/Three20.h"
-=======
 #import "IASKTextField.h"
->>>>>>> e9073a0c17a10d542148152d754f57095dc3755e
 
 static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
 static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
@@ -458,29 +455,13 @@ CGRect IASKCGRectSwap(CGRect rect);
 
         [[cell textLabel] setText:[specifier title]];
         return cell;
-<<<<<<< HEAD
     }
 	else if ([[specifier type] isEqualToString:kIASKDDOpenURLSpecifier] || [[specifier type] isEqualToString:kIASKDDInAppOpenURLSpecifier]) {
 	    UITableViewCell *cell = [[[IASKPSTitleValueSpecifierViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kIASKDDOpenURLSpecifier] autorelease];
 	    [[cell textLabel] setText:[specifier title]];
 	    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 	    return cell;        
-	}
-    else {
-=======
-    } else if ([[specifier type] isEqualToString:kIASKOpenURLSpecifier]) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[specifier type]];
-        
-        if (!cell) {
-            cell = [[[IASKPSTitleValueSpecifierViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:[specifier type]] autorelease];
-			[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-        }
-
-		cell.textLabel.text = [specifier title];
-		cell.detailTextLabel.text = [[specifier defaultValue] description];
-		return cell;        
 	} else {
->>>>>>> e9073a0c17a10d542148152d754f57095dc3755e
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[specifier type]];
 		
         if (!cell) {
@@ -562,21 +543,14 @@ CGRect IASKCGRectSwap(CGRect rect);
 		targetViewController.title = specifier.title;
         targetViewController.showCreditsFooter = NO;
         [[self navigationController] pushViewController:targetViewController animated:YES];
-<<<<<<< HEAD
     }
-	else if ([[specifier type] isEqualToString:kIASKDDInAppOpenURLSpecifier]) {
-		[[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:specifier.file] applyAnimated:YES]];
-	}
-	else if ([[specifier type] isEqualToString:kIASKDDOpenURLSpecifier]) {
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:specifier.file]]; 
-	}  
+	  else if ([[specifier type] isEqualToString:kIASKDDInAppOpenURLSpecifier]) {
+		    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:specifier.file] applyAnimated:YES]];
+	  }
+	  else if ([[specifier type] isEqualToString:kIASKDDOpenURLSpecifier]) {
+		    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:specifier.file]]; 
+	  }  
     else {
-=======
-    } else if ([[specifier type] isEqualToString:kIASKOpenURLSpecifier]) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:specifier.file]];    
-	} else {
->>>>>>> e9073a0c17a10d542148152d754f57095dc3755e
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
 }
